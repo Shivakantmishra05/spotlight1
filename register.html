@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spotlight — Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Spotlight logo" class="logo" />
+        <span class="brand-name">Spotlight</span>
+      </div>
+      <div class="header-actions">
+        <button id="darkToggle" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container auth-page">
+    <div class="auth-card">
+      <aside class="auth-visual">
+        <div class="visual-overlay">
+          <h2>Join Spotlight</h2>
+          <p>Create your account and explore upcoming college events.</p>
+        </div>
+      </aside>
+
+      <section class="auth-form" aria-labelledby="signup-heading">
+        <h1 id="signup-heading">Create account</h1>
+        <p class="muted">Fill in the details below.</p>
+
+        <form id="registerForm" novalidate>
+          <label class="field">
+            <span class="field-label">Full name</span>
+            <input id="fullName" type="text" placeholder="John Doe" required aria-describedby="nameErr" />
+            <small class="error" id="nameErr" aria-live="polite"></small>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Email</span>
+            <input id="regEmail" type="email" placeholder="name@college.edu" required aria-describedby="regEmailErr" />
+            <small class="error" id="regEmailErr" aria-live="polite"></small>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Mobile</span>
+            <input id="mobile" type="tel" placeholder="9876543210" pattern="[0-9]{10}" aria-describedby="mobileErr" />
+            <small class="error" id="mobileErr" aria-live="polite"></small>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Role</span>
+            <select id="regRole" required aria-describedby="roleErr">
+              <option value="">Select role</option>
+              <option value="student">Student</option>
+              <option value="faculty">Faculty</option>
+              <option value="admin">Admin</option>
+            </select>
+            <small class="error" id="roleErr" aria-live="polite"></small>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Password</span>
+            <div class="password-row">
+              <input id="regPass" type="password" minlength="6" placeholder="Enter password" aria-describedby="regPassErr" />
+              <button type="button" class="icon-btn pw-toggle" data-target="regPass" aria-label="Toggle password">👁️</button>
+            </div>
+            <small class="error" id="regPassErr" aria-live="polite"></small>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Confirm password</span>
+            <div class="password-row">
+              <input id="confirmPass" type="password" minlength="6" placeholder="Confirm password" aria-describedby="confirmPassErr" />
+              <button type="button" class="icon-btn pw-toggle" data-target="confirmPass" aria-label="Toggle password">👁️</button>
+            </div>
+            <small class="error" id="confirmPassErr" aria-live="polite"></small>
+          </label>
+
+          <button class="btn btn-primary" type="submit">Sign up</button>
+        </form>
+
+        <p class="muted" style="margin-top:12px">Already have an account? <a href="index.html" class="link">Login</a></p>
+      </section>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer container">
+    <small>© <span id="year"></span> Spotlight</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

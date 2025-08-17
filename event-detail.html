@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spotlight — Event Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #f5f8ff;
+      color: #333;
+    }
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+    }
+    nav {
+      background: #1e3a8a;
+      color: #fff;
+      padding: 0.8rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .brand {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    nav a {
+      color: #fff;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .event-banner {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .event-banner img {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    .event-banner h1 {
+      margin: 1rem 0 0.2rem;
+    }
+    .muted {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .event-detail {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 768px) {
+      .event-detail {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .event-info h2, .event-info h3 {
+      margin: 1rem 0 0.5rem;
+      color: #1e3a8a;
+    }
+    .event-info p, .event-info li {
+      color: #444;
+      line-height: 1.6;
+    }
+    .event-info ul {
+      padding-left: 1.2rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+    }
+    .event-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .btn {
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .btn-primary {
+      background: #1e3a8a;
+      color: #fff;
+    }
+    .btn-primary:hover { background: #162d6d; }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #1e3a8a;
+      color: #1e3a8a;
+    }
+    .btn-outline:hover {
+      background: #1e3a8a;
+      color: #fff;
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      padding: 1rem;
+      background: #f0f4ff;
+      font-size: 0.85rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body id="eventDetailPage">
+
+  <!-- Navbar -->
+  <nav>
+    <div class="brand">🌟 Spotlight</div>
+    <div>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="events.html">Events</a>
+      <a href="my-events.html">My Events</a>
+      <a href="notifications.html">Notifications</a>
+    </div>
+  </nav>
+
+  <!-- Event Banner -->
+  <header class="event-banner container">
+    <img id="eventBanner" src="" alt="Event Banner" />
+    <h1 id="eventName">Loading...</h1>
+    <p id="eventDate" class="muted"></p>
+  </header>
+
+  <!-- Event Content -->
+  <main class="container event-detail">
+    <section class="event-info">
+      <h2>About the Event</h2>
+      <p id="eventDesc">Loading event details...</p>
+
+      <h3>Schedule</h3>
+      <ul id="eventSchedule"><li>To be announced...</li></ul>
+
+      <h3>Guest Speakers</h3>
+      <ul id="eventSpeakers"><li>No speakers added yet.</li></ul>
+
+      <h3>Venue</h3>
+      <p id="eventVenue">TBA</p>
+
+      <h3>Seats Available</h3>
+      <p id="eventSeats">Loading...</p>
+    </section>
+
+    <!-- Actions -->
+    <aside>
+      <div class="card event-actions">
+        <button id="registerBtn" class="btn btn-primary">Register</button>
+        <button id="cancelBtn" class="btn btn-outline">Cancel</button>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Spotlight
+  </footer>
+
+  <!-- Inline JS -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Sample events database
+    const allEvents = {
+      up1: { title:"Diwali Dhamaka", date:"Nov 2, 2025 • 6:00 PM", venue:"Main Auditorium", desc:"Celebrate Diwali with music, dance and lights.", schedule:["6:00 PM - Lamp Lighting","7:00 PM - Dance","8:00 PM - Snacks"], speakers:["Dean of Students","Music Club"], seats:120, banner:"https://picsum.photos/id/1015/1000/400" },
+      up2: { title:"Navratri Night", date:"Oct 12, 2025 • 7:00 PM", venue:"College Ground", desc:"Enjoy Garba & Dandiya night with live music.", schedule:["7:00 PM - Garba","9:00 PM - Dandiya","11:00 PM - DJ"], speakers:["Cultural Head"], seats:200, banner:"https://picsum.photos/id/1011/1000/400" },
+      p1: { title:"BGMI Tournament", date:"Jun 20, 2025", venue:"Sports Complex", desc:"Inter-college gaming tournament.", schedule:["10:00 AM - Qualifiers","2:00 PM - Semi Final","5:00 PM - Finals"], speakers:["Esports Coach"], seats:80, banner:"https://picsum.photos/id/1016/1000/400" }
+    };
+
+    // Get event id from URL
+    const params = new URLSearchParams(window.location.search);
+    const evId = params.get("ev");
+    const ev = allEvents[evId];
+
+    if(ev){
+      document.getElementById("eventName").textContent = ev.title;
+      document.getElementById("eventDate").textContent = ev.date;
+      document.getElementById("eventDesc").textContent = ev.desc;
+      document.getElementById("eventVenue").textContent = ev.venue;
+      document.getElementById("eventSeats").textContent = ev.seats + " seats available";
+      document.getElementById("eventBanner").src = ev.banner;
+
+      // Fill schedule
+      const schedUl = document.getElementById("eventSchedule");
+      schedUl.innerHTML = "";
+      ev.schedule.forEach(item => {
+        const li = document.createElement("li"); li.textContent = item; schedUl.appendChild(li);
+      });
+
+      // Fill speakers
+      const spUl = document.getElementById("eventSpeakers");
+      spUl.innerHTML = "";
+      ev.speakers.forEach(sp => {
+        const li = document.createElement("li"); li.textContent = sp; spUl.appendChild(li);
+      });
+    } else {
+      document.getElementById("eventName").textContent = "Event Not Found";
+      document.getElementById("eventDesc").textContent = "Sorry, details not available.";
+    }
+
+    // Actions
+    document.getElementById("registerBtn").addEventListener("click", ()=> alert("You are registered for " + ev.title));
+    document.getElementById("cancelBtn").addEventListener("click", ()=> alert("Registration cancelled for " + ev.title));
+  </script>
+</body>
+</html>

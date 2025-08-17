@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spotlight — Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="logo.png" alt="Spotlight logo" class="logo" />
+        <span class="brand-name">Spotlight</span>
+      </div>
+      <div class="header-actions">
+        <button id="darkToggle" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container auth-page">
+    <div class="auth-card" role="main">
+      <!-- Visual -->
+      <aside class="auth-visual" aria-hidden="true">
+        <div class="visual-overlay">
+          <h2>Welcome to Spotlight</h2>
+          <p>Centralize college events — register fast, stay updated.</p>
+        </div>
+      </aside>
+
+      <!-- Form -->
+      <section class="auth-form" aria-labelledby="login-heading">
+        <h1 id="login-heading">Sign in</h1>
+        <p class="muted">Use your college account</p>
+
+        <form id="loginForm" novalidate>
+          <label class="field">
+            <span class="field-label">Email</span>
+            <input id="email" name="email" type="email" placeholder="name@college.edu" required aria-describedby="emailErr" />
+            <small class="error" id="emailErr" aria-live="polite"></small>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Password</span>
+            <div class="password-row">
+              <input id="password" name="password" type="password" minlength="6" placeholder="Enter password" required aria-describedby="passErr" />
+              <button type="button" class="icon-btn pw-toggle" data-target="password" aria-label="Toggle password">👁️</button>
+            </div>
+            <small class="error" id="passErr" aria-live="polite"></small>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Role</span>
+            <select id="role" name="role" required>
+              <option value="student">Student</option>
+              <option value="faculty">Faculty</option>
+              <option value="admin">Admin</option>
+            </select>
+          </label>
+
+          <div class="row-between small-gap">
+            <label class="checkbox">
+              <input id="remember" type="checkbox" /> <span>Remember me</span>
+            </label>
+            <a href="register.html" class="muted link">Create account / Forgot?</a>
+          </div>
+
+          <button id="loginBtn" class="btn btn-primary" type="submit">Sign in</button>
+        </form>
+
+        <div class="divider">or</div>
+        <div class="socials">
+          <button class="btn btn-outline">Continue with Google</button>
+        </div>
+      </section>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+  </main>
+
+  <footer class="site-footer container">
+    <small>© <span id="year"></span> Spotlight</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

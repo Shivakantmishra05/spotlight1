@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spotlight — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Top Navbar -->
+  <nav class="top-nav container" role="navigation" aria-label="Main navigation">
+    <div class="nav-left">
+      <img src="logo.png" class="logo" alt="Spotlight logo" />
+      <span class="brand-name">Spotlight</span>
+    </div>
+
+    <div class="nav-links" id="mainNav">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="events.html">Events</a>
+      <a href="my-events.html">My Events</a>
+      <a href="notifications.html">Notifications</a>
+      <a href="profile.html">Profile</a>
+    </div>
+
+    <div class="nav-actions">
+      <button id="darkToggle" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+      <div id="userAvatarNav" class="user-avatar">U</div>
+      <button id="logoutBtn" class="btn btn-outline small">Logout</button>
+    </div>
+    
+  </nav>
+
+  <!-- Hero -->
+  <header class="dashboard-hero container">
+    <div class="hero-left">
+      <div class="profile-pill">
+        <img id="userAvatar" src="logo.png" alt="profile" class="avatar" />
+        <div class="profile-meta">
+          <div id="welcomeText" class="welcomeText">Welcome, User</div>
+          <div id="userRole" class="muted">Student</div>
+        </div>
+      </div>
+      <h1 class="hero-head">Spotlight — Events Dashboard</h1>
+      <p class="muted hero-sub">Centralize, register, and relive campus moments. Quick access to your events and activity.</p>
+    </div>
+
+    <div class="hero-right">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">🎫</div>
+          <div class="stat-body">
+            <div class="stat-value" id="totalEvents">12</div>
+            <div class="stat-label">Total Events</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🕒</div>
+          <div class="stat-body">
+            <div class="stat-value" id="upcomingCount">4</div>
+            <div class="stat-label">Upcoming</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🖼️</div>
+          <div class="stat-body">
+            <div class="stat-value" id="pastCount">8</div>
+            <div class="stat-label">Past</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="container dashboard-main">
+    <!-- Student Section -->
+    <section id="studentSection" class="role-section" aria-labelledby="studentHead" style="display:none;">
+      <div class="section-row">
+        <h2 id="studentHead" class="section-title">Upcoming Events</h2>
+        <a href="events.html" class="link muted">See all events →</a>
+      </div>
+
+      <div class="carousel-wrap">
+        <div class="carousel" id="upcomingCarousel" tabindex="0" aria-roledescription="carousel" aria-label="Upcoming events carousel">
+          <button class="carousel-arrow left" data-target="upcomingCarousel" aria-label="Previous slide">‹</button>
+          <div class="carousel-track" ></div>
+          <button class="carousel-arrow right" data-target="upcomingCarousel" aria-label="Next slide">›</button>
+        </div>
+      </div>
+
+      <h3 class="section-subtitle">Past Events</h3>
+      <div class="poster-carousel-wrap">
+        <div class="poster-carousel" id="pastCarousel" tabindex="0" aria-roledescription="carousel" aria-label="Past events carousel">
+          <button class="carousel-arrow left" data-target="pastCarousel" aria-label="Previous poster">‹</button>
+          <div class="poster-track"></div>
+          <button class="carousel-arrow right" data-target="pastCarousel" aria-label="Next poster">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <section id="facultySection" class="role-section" aria-labelledby="facultyHead" style="display:none;">
+      <div class="section-row">
+        <h2 id="facultyHead" class="section-title">Quick Actions</h2>
+        <a href="create-event.html" class="btn btn-primary">Create Event</a>
+      </div>
+
+      <div class="faculty-actions-grid">
+        <div class="glass-card">
+          <div class="glass-icon">✍️</div>
+          <div class="glass-body">
+            <h4>Create & Manage</h4>
+            <p class="muted">Create events, manage registrations and update timelines.</p>
+            <div class="glass-actions">
+              <a href="create-event.html" class="btn btn-primary">Create</a>
+              <a href="my-events.html" class="btn btn-outline">My Events</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <div class="glass-icon">📋</div>
+          <div class="glass-body">
+            <h4>Pending Approvals</h4>
+            <p class="muted">Approve or reject event requests from faculty.</p>
+            <div class="glass-actions">
+              <a href="notifications.html" class="btn btn-outline">View</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card full-past">
+          <h3 class="section-subtitle">Past Events Hosted</h3>
+          <div class="poster-carousel-mini" id="pastCarouselMini">
+            <div class="poster-track-mini"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <small>© <span id="year"></span> Spotlight</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
